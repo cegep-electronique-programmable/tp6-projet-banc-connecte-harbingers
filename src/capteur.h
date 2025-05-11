@@ -14,13 +14,8 @@
  
  #include <Arduino.h>
  #include <Wire.h>
+ #include <APDS9930.h>
  
- 
- void iniCapteur(void);
- 
- void capteur(uint16_t levelLight, uint16_t nbrPersonnes);
- 
- 
- 
+
  
  #endif // CAPTEUR_H
