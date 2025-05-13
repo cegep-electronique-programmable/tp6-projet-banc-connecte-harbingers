@@ -1,31 +1,46 @@
 /**
  * Tp6 Projet banc connecté
  * Auteur: Jeff Truong
- * Date: 13 Mai 2025
+ * Date: 22 Mai 2025
  * Desc: Ce code indique si le chargeur par induction est présentement en utilisation
 */
 
 #include <LED.h>
-#include <Adafruit_NeoPixel.h>
 
-void start_LED() {
-#if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
- // clock_prescale_set(clock_div_1);
-#endif
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-  pixels.setPin(1);
+void start_LED() 
+{
   pixels.begin();
   pixels.setBrightness(BRIGHTNESS);
+  pixels.show();
 }
 
-void GestionLED ()
+void GestionLED (bool Chargement, bool DarkMode)
 {
-   pixels.clear();
+  pixels.clear();
 
-  for(int i=0; i<NUMPIXELS; i++) {
+  uint8_t r = 0, g = 0, b = 0;
 
-    pixels.setPixelColor(i, pixels.Color(150, 150, 0));
-    pixels.show();
-    delay(DELAYVAL);
+  if (Chargement) 
+  {
+    r = 150; g = 0; b = 0;  // Rouge
+  } 
+  else 
+  {
+    r = 150; g = 150; b = 0;  // Jaune
   }
+
+  // Diminuer l'intensité si c'est sombre
+  if (DarkMode) 
+  {
+    r /= 5; g /= 5; b /= 5;
+  }
+  for (int i = 0; i < NUMPIXELS; i++) 
+  {
+    pixels.setPixelColor(i, pixels.Color(r, g, b));
+  }
+
+  pixels.show();
+
 }
