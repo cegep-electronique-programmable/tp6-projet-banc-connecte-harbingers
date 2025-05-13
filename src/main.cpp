@@ -34,6 +34,7 @@ void loop()
   float luminosity = GestionCapteurLuminosity();
   uint16_t proximity = GestionCapteurProximity();
 
+  //=============À effacer lorsque vous aurez utilisé les variables==============
   Serial.println(luminosity);
   Serial.println(proximity);
 
