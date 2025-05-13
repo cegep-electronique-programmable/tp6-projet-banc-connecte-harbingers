@@ -8,7 +8,7 @@ float ambient_light = 0; // can also be an unsigned long
 uint16_t ch0 = 0;
 uint16_t ch1 = 1;
 
-void setup() {
+void setup_capteur() {
   //analogReference(EXTERNAL);
 
   // Initialize Serial port
@@ -70,7 +70,7 @@ void setup() {
 #endif
 }
 
-void loop(){
+void GestionCapteur(){
   // Read the proximity value
   if ( !apds.readProximity(proximity_data) ) {
     Serial.println("Error reading proximity value");
