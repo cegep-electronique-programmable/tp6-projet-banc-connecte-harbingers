@@ -2,7 +2,7 @@
 
 #include "capteur.h"
 
-APDS9930 apds = APDS9930();
+extern APDS9930 apds;
 uint16_t proximity_data = 0;
 float ambient_light = 0; // can also be an unsigned long
 uint16_t ch0 = 0;

@@ -10,7 +10,7 @@
 #include "affichage.h"
 #include "capteur.h"
 
-APDS9930 test = APDS9930();
+APDS9930 apds = APDS9930();
 
 #define PIN_CHARGEUR A0
 #define SEUIL_TENSION 1000  // À ajuster
@@ -27,12 +27,12 @@ void setup()
 // the loop function runs over and over again forever
 void loop()
 {
-  float ambient_light = 0;
+  //float ambient_light = 0;
   bool DarkMode = false;
-  bool Chargement = false;
+  bool Chargement = true;
 
-  // Lecture de la lumière ambiante
-  if (test.readAmbientLightLux(ambient_light)) 
+/*   // Lecture de la lumière ambiante
+  if (apds.readAmbientLightLux(ambient_light)) 
   {
     DarkMode = ambient_light < 10.0;    // Seuil à ajuster
     Serial.print("Lumière ambiante: ");
@@ -47,7 +47,7 @@ void loop()
   int lecture = analogRead(PIN_CHARGEUR);
   Serial.print("Tension lue (chargeur): ");
   Serial.println(lecture);
-  Chargement = lecture > SEUIL_TENSION;
+  Chargement = lecture > SEUIL_TENSION; */
 
   // Mise à jour des DEL
   GestionLED(Chargement, DarkMode);

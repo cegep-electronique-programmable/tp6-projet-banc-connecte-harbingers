@@ -17,9 +17,9 @@
 #endif
 
 
-#define PIN        6
+#define PIN        1
 #define NUMPIXELS 10
-#define BRIGHTNESS 50 // Set BRIGHTNESS to about 1/5 (max = 255)
+#define BRIGHTNESS 25 // Set BRIGHTNESS to about 1/5 (max = 255)
 #define DELAYVAL   500
 
 extern Adafruit_NeoPixel pixels;
