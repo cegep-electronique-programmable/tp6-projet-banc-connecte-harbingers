@@ -18,6 +18,7 @@
  
 void setup_capteur(void);
 void GestionCapteur(void);
-void variables_capteur(void);
+uint16_t GestionCapteurProximity(void);
+float GestionCapteurLuminosity(void);
  
  #endif // CAPTEUR_H

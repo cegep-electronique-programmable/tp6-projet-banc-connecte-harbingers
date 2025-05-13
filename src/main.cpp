@@ -31,6 +31,12 @@ void loop()
   bool DarkMode = false;
   bool Chargement = true;
 
+  float luminosity = GestionCapteurLuminosity();
+  uint16_t proximity = GestionCapteurProximity();
+
+  Serial.println(luminosity);
+  Serial.println(proximity);
+
 /*   // Lecture de la lumière ambiante
   if (apds.readAmbientLightLux(ambient_light)) 
   {
