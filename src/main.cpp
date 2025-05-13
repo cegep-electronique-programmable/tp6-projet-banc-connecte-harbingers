@@ -10,13 +10,10 @@
 #include "affichage.h"
 #include "capteur.h"
 
+APDS9930 test = APDS9930();
 
 #define PIN_CHARGEUR A0
 #define SEUIL_TENSION 1000  // À ajuster
-
-APDS9930 apds = APDS9930();
-
-
 
 // the setup function runs once when you press reset or power the board
 void setup() 
@@ -24,20 +21,7 @@ void setup()
   pinMode(PIN_CHARGEUR, INPUT);
   Serial.begin(9600);
   start_LED();
-  
-  // Initialisation du capteur APDS-9930
-  if (apds.init()) 
-  {
-    apds.setProximityGain(PGAIN_2X);
-    apds.enableProximitySensor(false);
-    apds.enableLightSensor(false);
-    Serial.println("Capteur initialisé");
-  }
-  else
-  {
-    //Serial.println("Skill issue ma guy");
-    Serial.println("Erreur d'initialisation du capteur APDS-9930");
-  }
+  setup_capteur();
 }
 
 // the loop function runs over and over again forever
@@ -48,7 +32,7 @@ void loop()
   bool Chargement = false;
 
   // Lecture de la lumière ambiante
-  if (apds.readAmbientLightLux(ambient_light)) 
+  if (test.readAmbientLightLux(ambient_light)) 
   {
     DarkMode = ambient_light < 10.0;    // Seuil à ajuster
     Serial.print("Lumière ambiante: ");

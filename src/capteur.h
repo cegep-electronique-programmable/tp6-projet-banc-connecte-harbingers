@@ -16,6 +16,8 @@
  #include <Wire.h>
  #include <APDS9930.h>
  
-
+void setup_capteur(void);
+void GestionCapteur(void);
+void variables_capteur(void);
  
  #endif // CAPTEUR_H
