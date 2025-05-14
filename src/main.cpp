@@ -15,6 +15,10 @@ APDS9930 apds = APDS9930();
 #define PIN_CHARGEUR A0
 #define SEUIL_TENSION 1000  // À ajuster
 
+//Variables globales
+uint16_t nbrPersonnes = 0;
+bool memePersonne = 0;
+
 // the setup function runs once when you press reset or power the board
 void setup() 
 {
@@ -27,16 +31,32 @@ void setup()
 // the loop function runs over and over again forever
 void loop()
 {
-  //float ambient_light = 0;
+  // float ambient_light = 0;
   bool DarkMode = false;
   bool Chargement = true;
 
   float luminosity = GestionCapteurLuminosity();
   uint16_t proximity = GestionCapteurProximity();
 
-  //=============À effacer lorsque vous aurez utilisé les variables==============
+  // Ne pas augmenter le compte de personnesi c'est (en théorie) la même personne
+  if(memePersonne){
+    // Si la personne pars permettre de vérifier s'il y a une nouvelle personnes
+    if(proximity < 600){
+      memePersonne = 0;
+    }
+  }
+  // S'il y a une personne qui est proche
+  else if(proximity >= 600){
+    // Augmenter la valeur du nombres de personnes passées
+    nbrPersonnes++;
+    memePersonne = 1;
+  }
+
+  //============= À effacer lorsque vous aurez utilisé les variables ==============
+  /*
   Serial.println(luminosity);
   Serial.println(proximity);
+  */
 
 /*   // Lecture de la lumière ambiante
   if (apds.readAmbientLightLux(ambient_light)) 
