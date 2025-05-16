@@ -51,13 +51,13 @@ void loop()
     nbrPersonnes++;
     memePersonne = 1;
   }
-
+  
   //============= À effacer lorsque vous aurez utilisé les variables ==============
   /*
   Serial.println(luminosity);
   Serial.println(proximity);
   */
-
+  
 /*   // Lecture de la lumière ambiante
   if (apds.readAmbientLightLux(ambient_light)) 
   {
