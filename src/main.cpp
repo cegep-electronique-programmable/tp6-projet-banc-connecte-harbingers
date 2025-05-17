@@ -33,6 +33,7 @@ void setup()
 // the loop function runs over and over again forever
 void loop()
 {
+  void Red();
   //À enlever? (del qui flash)
   //digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
   //delay(1000);                      // wait for 1second
@@ -84,12 +85,11 @@ void loop()
   Chargement = lecture > SEUIL_TENSION; */
 
   // Mise à jour des DEL
-  GestionLED(Chargement, DarkMode);
-  delay(500);     
+
   /*
   Fonction afficher pour l'écran
   premier nombre = variable en int du nombre de personne passé (so from Cesar)
   deuxieme nombre = variable en int du nombre de telephone charge (so from Jeff)
   */
-  afficher(nbrPersonnes,NbrChargement);
+  //afficher(nbrPersonnes,NbrChargement);
 } 

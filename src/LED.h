@@ -25,4 +25,5 @@
 extern Adafruit_NeoPixel pixels;
 
 void start_LED();
-void GestionLED(bool Chargement, bool DarkMode);
+void Red();
+void Yellow();

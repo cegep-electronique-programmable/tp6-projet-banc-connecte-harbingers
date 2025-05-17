@@ -16,32 +16,20 @@ void start_LED()
   pixels.show();
 }
 
-void GestionLED (bool Chargement, bool DarkMode)
-{
+void Red() {
   pixels.clear();
-
-  uint8_t g = 0, r = 0, b = 0;
-
-  if (Chargement) 
-  {
-    g = 255; r = 0; b = 0;  // Rouge
-  } 
-  else 
-  {
-    g = 0; r = 0; b = 0;  // Jaune
+  for (int i = 0; i < NUMPIXELS; i++) {
+    pixels.setPixelColor(i, pixels.Color(255, 0, 0)); //Rouge
+    delay(DELAYVAL);
   }
- /* 
-  // Diminuer l'intensité si c'est sombre
-  if (DarkMode) 
-  {
-    g = 5; r = 5; b = 5;
-  }
-  for (int i = 0; i < NUMPIXELS; i++) 
-  {
-    pixels.setPixelColor(i, pixels.Color(g, r, b));
-  }
- */
-  pixels.setPixelColor(0, pixels.Color(255, 0, 0)); 
   pixels.show();
- 
+}
+
+void Yellow() {
+  pixels.clear();
+  for (int i = 0; i < NUMPIXELS; i++) {
+    pixels.setPixelColor(i, pixels.Color(250, 250, 0)); //Jaune
+    delay(DELAYVAL);
+  }
+  pixels.show();
 }
