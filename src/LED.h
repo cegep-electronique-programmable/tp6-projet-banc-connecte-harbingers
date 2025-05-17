@@ -25,4 +25,4 @@
 extern Adafruit_NeoPixel pixels;
 
 void start_LED();
-void GestionLED(bool charging, bool isDark);
+void GestionLED(bool Chargement, bool DarkMode);
