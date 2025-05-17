@@ -16,6 +16,9 @@
  #include <Wire.h>
  #include <APDS9930.h>
  
-
+void setup_capteur(void);
+void GestionCapteur(void);
+uint16_t GestionCapteurProximity(void);
+float GestionCapteurLuminosity(void);
  
  #endif // CAPTEUR_H

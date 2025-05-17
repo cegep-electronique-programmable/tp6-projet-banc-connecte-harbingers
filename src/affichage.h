@@ -1,26 +1,28 @@
-/*!
- * @file affichage.h
- *
- * @author À compléter
+/*
+ * Nom de fichier 
+ *      affichage.h
  * 
- * @date À compléter
+ * Sommaire
+ *      Fichier .h pour l'affichage de l'écran
+ *      Librarie: U8g2lib
+ * Auteur 
+ *      Sonia
  * 
- * @brief À compléter
- *
+ * Date de création
+ *      13 mai 2025
+ *  
  */
 
 #ifndef AFFICHAGE_H
 #define AFFICHAGE_H
 
 #include <Arduino.h>
+#include <U8g2lib.h>
 
-
-
-
-
-void afficherInfo(uint16_t nbrPresence, uint16_t nbrCharge);
-
-
-
+//déclaration des fonctions
+void startEcran(void);
+void titres(void);
+void line(void);
+void afficher(int,int);
 
 #endif // AFFICHAGE_H

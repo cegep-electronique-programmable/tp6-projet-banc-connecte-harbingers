@@ -2,13 +2,13 @@
 
 #include "capteur.h"
 
-APDS9930 apds = APDS9930();
+extern APDS9930 apds;
 uint16_t proximity_data = 0;
 float ambient_light = 0; // can also be an unsigned long
 uint16_t ch0 = 0;
 uint16_t ch1 = 1;
 
-void setup() {
+void setup_capteur(void) {
   //analogReference(EXTERNAL);
 
   // Initialize Serial port
@@ -70,20 +70,33 @@ void setup() {
 #endif
 }
 
-void loop(){
+uint16_t GestionCapteurProximity(void){
   // Read the proximity value
   if ( !apds.readProximity(proximity_data) ) {
     Serial.println("Error reading proximity value");
+
+    // Return 0 to main
+    return 0;
   } else {
     Serial.print("Proximity: ");
     Serial.println(proximity_data);
+    // Return the value of proximity data to main
+    return proximity_data;
   }
 
+  // Wait 1 second before next reading
+  delay(1000);
+}
+
+float GestionCapteurLuminosity(void){
   // Read the light levels (ambient, red, green, blue)
   if (  !apds.readAmbientLightLux(ambient_light) ||
         !apds.readCh0Light(ch0) || 
         !apds.readCh1Light(ch1) ) {
     Serial.println(F("Error reading light values"));
+
+    // Return 0 to main
+    return 0;
   } else {
     Serial.print(F("Ambient: "));
     Serial.print(ambient_light);
@@ -91,8 +104,11 @@ void loop(){
     Serial.print(ch0);
     Serial.print(F("  Ch1: "));
     Serial.println(ch1);
+
+    // Return the value of ambient light to main
+    return ambient_light;
   }
-  
+
   // Wait 1 second before next reading
   delay(1000);
 }
