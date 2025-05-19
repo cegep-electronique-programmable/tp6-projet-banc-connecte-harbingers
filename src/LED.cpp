@@ -13,6 +13,7 @@ void start_LED()
 {
   pixels.begin();
   pixels.setBrightness(BRIGHTNESS);
+  pixels.clear();
   pixels.show();
 }
 
@@ -20,16 +21,35 @@ void Red() {
   pixels.clear();
   for (int i = 0; i < NUMPIXELS; i++) {
     pixels.setPixelColor(i, pixels.Color(255, 0, 0)); //Rouge
-    delay(DELAYVAL);
   }
   pixels.show();
+  
 }
 
 void Yellow() {
   pixels.clear();
   for (int i = 0; i < NUMPIXELS; i++) {
-    pixels.setPixelColor(i, pixels.Color(250, 250, 0)); //Jaune
-    delay(DELAYVAL);
+    pixels.setPixelColor(i, pixels.Color(255, 255, 0)); //Jaune
   }
   pixels.show();
+}
+
+void GestionLED(bool Chargement, bool DarkMode) {
+  if (DarkMode) 
+  {
+    pixels.setBrightness(BRIGHTNESS / 5);  // Atténuer si sombre
+  }
+  else 
+  {
+    pixels.setBrightness(BRIGHTNESS);      // Luminosité normale
+  }
+
+  if (Chargement) 
+  {
+    Red();    // Utilise ta fonction Red()
+  } 
+  else 
+  {
+    Yellow(); // Utilise ta fonction Yellow()
+  }
 }
