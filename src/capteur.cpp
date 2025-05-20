@@ -8,7 +8,8 @@ float ambient_light = 0; // can also be an unsigned long
 uint16_t ch0 = 0;
 uint16_t ch1 = 1;
 
-void setup_capteur(void) {
+void setup_capteur(void) 
+{
   //analogReference(EXTERNAL);
 
   // Initialize Serial port
@@ -85,7 +86,7 @@ uint16_t GestionCapteurProximity(void){
   }
 
   // Wait 1 second before next reading
-  delay(1000);
+  //delay(1000);
 }
 
 float GestionCapteurLuminosity(void){
@@ -110,5 +111,5 @@ float GestionCapteurLuminosity(void){
   }
 
   // Wait 1 second before next reading
-  delay(1000);
+  //delay(1000);
 }
