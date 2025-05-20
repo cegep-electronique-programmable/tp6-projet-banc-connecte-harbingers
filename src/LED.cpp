@@ -12,36 +12,50 @@ Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 void start_LED() 
 {
   pixels.begin();
-  pixels.setBrightness(BRIGHTNESS);
+  pixels.setBrightness(BRIGHTNESS); // Définit la luminosité initiale
+  pixels.clear();
   pixels.show();
 }
 
-void GestionLED (bool Chargement, bool DarkMode)
+void Red() 
 {
   pixels.clear();
+  for (int i = 0; i < NUMPIXELS; i++) 
+  {
+    pixels.setPixelColor(i, pixels.Color(255, 0, 0));  // Met à jour les LED avec la couleur rouge
+  }
+  pixels.show();
+  
+}
 
-  uint8_t g = 0, r = 0, b = 0;
+void Yellow() 
+{
+  pixels.clear();
+  for (int i = 0; i < NUMPIXELS; i++) 
+  {
+    pixels.setPixelColor(i, pixels.Color(255, 255, 0)); // Met à jour les LED avec la couleur jaune
+  }
+  pixels.show();
+}
+
+//Gère l'affichage des DEL selon l'état de charge et l'environnement lumineux
+void GestionLED(bool Chargement, bool DarkMode)
+{
+  if (DarkMode) 
+  {
+    pixels.setBrightness(BRIGHTNESS / 5);  // Atténuer si sombre
+  }
+  else 
+  {
+    pixels.setBrightness(BRIGHTNESS);      // Luminosité normale
+  }
 
   if (Chargement) 
   {
-    g = 255; r = 0; b = 0;  // Rouge
+    Red();    // Appareil en charge = rouge
   } 
   else 
   {
-    g = 0; r = 0; b = 0;  // Jaune
+    Yellow(); // Pas de charge = jaune
   }
- /* 
-  // Diminuer l'intensité si c'est sombre
-  if (DarkMode) 
-  {
-    g = 5; r = 5; b = 5;
-  }
-  for (int i = 0; i < NUMPIXELS; i++) 
-  {
-    pixels.setPixelColor(i, pixels.Color(g, r, b));
-  }
- */
-  pixels.setPixelColor(0, pixels.Color(255, 0, 0)); 
-  pixels.show();
- 
 }

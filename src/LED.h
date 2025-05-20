@@ -19,10 +19,12 @@
 
 #define PIN        1
 #define NUMPIXELS 10
-#define BRIGHTNESS 25 // Set BRIGHTNESS to about 1/5 (max = 255)
+#define BRIGHTNESS 25 
 #define DELAYVAL   500
 
 extern Adafruit_NeoPixel pixels;
 
 void start_LED();
+void Red();
+void Yellow();
 void GestionLED(bool Chargement, bool DarkMode);
