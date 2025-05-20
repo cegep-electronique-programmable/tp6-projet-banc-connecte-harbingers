@@ -13,7 +13,6 @@ void setup_capteur(void)
   //analogReference(EXTERNAL);
 
   // Initialize Serial port
-  Serial.begin(9600);
   Serial.println();
   Serial.println(F("---------------------------"));
   Serial.println(F("APDS-9930 - ProximitySensor"));

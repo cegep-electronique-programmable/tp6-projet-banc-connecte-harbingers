@@ -28,7 +28,7 @@ void setup()
   Serial.begin(9600);
   start_LED(); // Affiche rouge sur toutes les LED 
   startEcran(); 
-  //setup_capteur();
+  setup_capteur();
 }
 
 // the loop function runs over and over again forever
