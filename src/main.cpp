@@ -55,25 +55,29 @@ void loop()
   Serial.println(proximity);
 
   // Mise à jour des DEL
-  bool Chargement = false;
-  int valeur = analogRead(PIN_CHARGEUR);
+  int valeur = analogRead(PIN_CHARGEUR); //Lecture de la tension d'entrée du chargeur
 
-  Chargement = valeur < SEUIL_TENSION;
+  bool Chargement = valeur < SEUIL_TENSION; //Déterminer si un téléphone est en train de charger
 
-  if (Chargement && !ancienChargement) {
+  //Si un nouveau chargement commence le compter
+  if (Chargement && !ancienChargement) 
+  {
     NbrChargement++;
   }
 
+  //Mémoriser l'état actuel pour la prochaine itération
   ancienChargement = Chargement;
 
+  //Activer le mode sombre si la luminosité ambiante est faible
   bool DarkMode = luminosity < 10.0;
 
+  //Mettre à jour les LEDs selon l’état de charge et la luminosité ambiante
   GestionLED(Chargement, DarkMode);
 
   /*
   Fonction afficher pour l'écran
-  premier nombre = variable en int du nombre de personne passé (so from Cesar)
-  deuxieme nombre = variable en int du nombre de telephone charge (so from Jeff)
+  premier nombre = variable en int du nombre de personne passé 
+  deuxieme nombre = variable en int du nombre de telephone charge 
   */
 
   afficher(nbrPersonnes,NbrChargement);

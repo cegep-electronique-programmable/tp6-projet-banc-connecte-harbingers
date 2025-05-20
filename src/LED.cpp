@@ -12,29 +12,35 @@ Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 void start_LED() 
 {
   pixels.begin();
-  pixels.setBrightness(BRIGHTNESS);
+  pixels.setBrightness(BRIGHTNESS); // Définit la luminosité initiale
   pixels.clear();
   pixels.show();
 }
 
-void Red() {
+void Red() 
+{
   pixels.clear();
-  for (int i = 0; i < NUMPIXELS; i++) {
-    pixels.setPixelColor(i, pixels.Color(255, 0, 0)); //Rouge
+  for (int i = 0; i < NUMPIXELS; i++) 
+  {
+    pixels.setPixelColor(i, pixels.Color(255, 0, 0));  // Met à jour les LED avec la couleur rouge
   }
   pixels.show();
   
 }
 
-void Yellow() {
+void Yellow() 
+{
   pixels.clear();
-  for (int i = 0; i < NUMPIXELS; i++) {
-    pixels.setPixelColor(i, pixels.Color(255, 255, 0)); //Jaune
+  for (int i = 0; i < NUMPIXELS; i++) 
+  {
+    pixels.setPixelColor(i, pixels.Color(255, 255, 0)); // Met à jour les LED avec la couleur jaune
   }
   pixels.show();
 }
 
-void GestionLED(bool Chargement, bool DarkMode) {
+//Gère l'affichage des DEL selon l'état de charge et l'environnement lumineux
+void GestionLED(bool Chargement, bool DarkMode)
+{
   if (DarkMode) 
   {
     pixels.setBrightness(BRIGHTNESS / 5);  // Atténuer si sombre
@@ -46,10 +52,10 @@ void GestionLED(bool Chargement, bool DarkMode) {
 
   if (Chargement) 
   {
-    Red();    // Utilise ta fonction Red()
+    Red();    // Appareil en charge = rouge
   } 
   else 
   {
-    Yellow(); // Utilise ta fonction Yellow()
+    Yellow(); // Pas de charge = jaune
   }
 }
