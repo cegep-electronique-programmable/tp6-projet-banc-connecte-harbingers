@@ -57,7 +57,6 @@ void loop()
   // Mise à jour des DEL
   bool Chargement = false;
   int valeur = analogRead(PIN_CHARGEUR);
-  bool DarkMode = false;
 
   Chargement = valeur < SEUIL_TENSION;
 
@@ -66,12 +65,8 @@ void loop()
   }
 
   ancienChargement = Chargement;
-  
-  float ambient_light = 0;
-  if (apds.readAmbientLightLux(ambient_light)) 
-  {
-    DarkMode = ambient_light < 10.0;
-  }
+
+  bool DarkMode = luminosity < 10.0;
 
   GestionLED(Chargement, DarkMode);
 
